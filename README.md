@@ -1,6 +1,6 @@
 # EXFOR chart
 
-This is an interactive application to inspect the EXFOR database and compare to the predictions of various models. This tool was created as part of the NEUCOS project supported by the European Research Council (ERC - grant No. 646623).
+This is an interactive application to inspect the EXFOR database and compare to the predictions of various models. This tool was created as part of the NEUCOS project supported by the European Research Council (ERC - grant No. 646623). It is based on the `x4i3` package for the database access available [here](https://github.com/afedynitch/x4i3). 
 
 ### Installation
 
@@ -19,7 +19,7 @@ This is an interactive application to inspect the EXFOR database and compare to 
 
 ### Requirements
 
-- a few GB of hard drive space for `x4i3` package and the data files.
+- a few GB of hard drive space for `x4i3` and the data files.
 - Python 3 or 2
 
 ### Documentation
