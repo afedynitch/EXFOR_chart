@@ -121,7 +121,6 @@ class PointBrowser(object):
         #                          color='yellow', visible=False)
 
     def onpick(self, event):
-
         N = np.round(event.mouseevent.xdata).astype('int')
         Z = np.round(event.mouseevent.ydata).astype('int')
         nco_id = (N + Z) * 100 + Z
@@ -138,9 +137,12 @@ class PointBrowser(object):
         self.update()
 
     def onmove(self, event):
-        print(event.xdata, event.ydata)
-        if event.xdata < -1. or event.xdata > 30. \
-                or event.ydata < -1 or event.ydata > 30:
+        if (event.xdata is None or
+            event.ydata is None or
+            event.xdata < -1. or
+            event.xdata > 30.
+            or event.ydata < -1 or
+            event.ydata > 30):
             return
         N = np.round(event.xdata).astype('int')
         Z = np.round(event.ydata).astype('int')

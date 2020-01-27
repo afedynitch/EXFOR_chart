@@ -1,4 +1,4 @@
-from __future__ import print_function
+from __future__ import print_function, division
 import os
 import sys
 from os.path import join
@@ -28,8 +28,8 @@ def get_exfor_symb(nco_id):
 
 
 def get_N_Z(nco_id):
-    Z = nco_id % 100
-    A = (nco_id - Z)/100
+    Z = int(nco_id % 100)
+    A = int((nco_id - Z)/100)
     return A-Z, Z
 
 
@@ -233,6 +233,9 @@ class NeucosmaDB(NuclearDB):
         except IOError:
             print('{0}::load_or_parse(): no precompiled DB found. Parsing ASCII...'
                 .format(self.__class__.__name__))
+        except ValueError:
+            print('{0}::load_or_parse(): Pickle protocol problem for {1}'
+                .format(self.__class__.__name__, join(data_dir, prefix + '_db.ppd')))
 
         # If no pre-compiled database found, parse the ASCII files
 
@@ -261,7 +264,7 @@ class NeucosmaDB(NuclearDB):
         # Dump databse to file
         pickle.dump(self.db,
                     open(join(data_dir, prefix + '_db.ppd'), 'wb'),
-                    protocol=-1)
+                    protocol=2)
 
 
 class CombinedNeucosmaDB(NeucosmaDB):
