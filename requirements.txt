@@ -1,5 +1,0 @@
-x4i3
-six
-periodictable
-numpy
-matplotlib
